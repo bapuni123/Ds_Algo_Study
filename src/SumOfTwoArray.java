@@ -1,37 +1,52 @@
 import java.util.*;
 
-public class SumOfTwoArray{
+public class SumOfTwoArray {
 
     public static void main(String[] args) throws Exception {
-        // write your code here
+       // BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
         Scanner sc = new Scanner(System.in);
+
         int n1 = sc.nextInt();
-        int[] arr1 = new int[n1];
+        int[] a1 = new int[n1];
         for(int i=0;i<n1;i++){
-            arr1[i] = sc.nextInt();
+            a1[i] = sc.nextInt();
         }
         int n2 = sc.nextInt();
-        int[] arr2 = new int[n2];
-        for(int j=0;j<n2;j++){
-            arr2[j] = sc.nextInt();
-        }
-        int[] res = new int[Math.max(n1, n2)];
-
-        if(n1>n2){
-            res[0] = arr1[0];
-            for(int i=1;i<n2;i++){
-                res[i] = arr1[i] + arr2[i];
-            }
-        }else{
-            res[0] = arr2[0];
-            for(int i=0;i<n1;i++){
-                res[i+1] = arr1[i] + arr2[i+1];
-            }
+        int[] a2 = new int[n2];
+        for(int i=0;i<n2;i++){
+            a2[i] = sc.nextInt();
         }
 
-        //System.out.println(Arrays.toString(res));
-        for (int re : res) {
-            System.out.println(re);
+        int[] sum = new int[Math.max(n1, n2)];
+        int i = n1 - 1;
+        int j = n2 - 1;
+        int k = sum.length - 1;
+        int c = 0;
+        while (i >= 0 || j >= 0) {
+            int d = c;
+
+            if (i >= 0)
+                d += a1[i];
+
+            if (j >= 0)
+                d += a2[j];
+
+            c = d / 10;
+            d = d % 10;
+            sum[k] = d;
+
+            i--;
+            j--;
+            k--;
+        }
+
+        if (c > 0) {
+            System.out.println(c);
+        }
+        for (int val : sum) {
+            System.out.println(val);
         }
     }
+
 }
