@@ -12,7 +12,7 @@ public class pattern5 {
             }
 
             for(int j=1;j<=st;j++){
-                System.out.print("*	");
+                System.out.print("@	");
             }
             if(i<=n/2){
                 sp--;
